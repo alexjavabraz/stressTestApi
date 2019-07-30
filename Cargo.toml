@@ -1,0 +1,12 @@
+[package]
+name = "blockchain_api"
+version = "0.1.0"
+authors = ["Alex Simas Braz <iventis.abraz@hubfintech.com.br>"]
+edition = "2018"
+
+[dependencies]
+reqwest = "0.9.19"
+serde = "1.0.97"
+serde_derive = "1.0.97"
+serde_json = "1.0.40"
+rand = "0.7.0"
