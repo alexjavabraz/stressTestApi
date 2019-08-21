@@ -1,7 +1,7 @@
 [package]
 name = "blockchain_api"
 version = "0.1.0"
-authors = ["Alex Simas Braz <iventis.abraz@hubfintech.com.br>"]
+authors = ["Alex Simas Braz <alexjavabraz@gmail.com.br>"]
 edition = "2018"
 
 [dependencies]

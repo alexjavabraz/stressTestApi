@@ -5,6 +5,8 @@ mod totalAmount;
 mod listAllTransactions;
 mod createTransfer;
 mod login;
+mod createDebitOperation;
+mod tests;
 
 #[macro_use]
 extern crate serde_derive;
@@ -18,7 +20,7 @@ use rand::Rng;
 use reqwest::Client;
 use std::time::{Duration, Instant};
 
-static NTHREADS: i32 = 1000;
+static NTHREADS: i32 = 100;
 
 fn getBalance(i: i32) {
             getBalance::call_api_balance(i);
@@ -44,26 +46,33 @@ fn create_transaction(i: i32) {
             createTransfer::callApi(i);
 }
 
+pub fn create_transaction_debit(i: i32) {
+      createDebitOperation::call_api_debit_operation(i);
+}
+
 fn main() {
     let start = Instant::now();
 
     for i in 0..NTHREADS {
         let result = thread::spawn(move || {
-            println!("Starting...{}", i);
+            //println!("Starting...{}", i);
+            create_transaction_debit(i);
+            /*
             getBalance(i);
             createAccount(i);
             total_transactions(i);
             total_amount(i);
             list_all_transactions(i);
             create_transaction(i);
+            */
         });
 
-        if i % 20 == 0 {
+/*
+        if i % 200 == 0 {
             thread::sleep(time::Duration::from_secs(5));
         }
+        */
     }
-
-    
 
     let duration = start.elapsed();
     println!("Time elapsed in main() is: {:?}", duration);
